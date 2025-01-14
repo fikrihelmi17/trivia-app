@@ -219,7 +219,7 @@ def trivia_calculate_scores(event, _):
         KeyConditionExpression=boto3.dynamodb.conditions.Key("gameId").eq(game_id)
     )
 
-    # spin thru the connections and check their answers
+    # spin through the connections and check their answers
     players = []
     for connection in connections["Items"]:
         connection_id = connection["connectionId"]
