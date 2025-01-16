@@ -6,3 +6,5 @@ s3_prefix = "trivia-app"
 region = "ap-southeast-1"
 capabilities = "CAPABILITY_IAM"
 image_repositories = []
+confirm_changeset = true
+disable_rollback = true

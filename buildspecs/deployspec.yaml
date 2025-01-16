@@ -1,3 +1,4 @@
+
 version: 0.2
 
 phases:
@@ -11,6 +12,13 @@ phases:
       - sam build
       - sam deploy --no-fail-on-empty-changeset
       - cd front-end-react
+      - curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
+      - export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+      - [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+      - source ~/.bashrc
+      - nvm install lts/gallium
+      - nvm alias default lts/gallium
+      - nvm use 16
       - npm install
       - npm run build
       - aws s3 sync --acl public-read build s3://fikri123-trivia-app-bucket/
